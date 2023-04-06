@@ -9,21 +9,23 @@ import SwiftUI
 
 struct ContentView: View {
     
+    // MARK: Stored properties
+    @State var items = ["Item 1", "Item 2", "Item 3", "Item 4", "Item 5"]
+    
     // MARK: Computed properties
     var body: some View {
         List {
-            Text("Item 1")
-            Text("Item 2")
-            Text("Item 3")
-            Text("Item 4")
-            Text("Item 5")
+            ForEach(items, id: \.self) { currentItem in
+                Text(currentItem)
+            }
+            .onDelete(perform: removeRows)
         }
-        .onDelete(perform: removeRows)
     }
     
     // MARK: Functions
     func removeRows(at offsets: IndexSet) {
-        // Wait a minute... what array are we removing rows from?
+        // Remove element(s) from the `items` array
+        items.remove(atOffsets: offsets)
     }
 }
 

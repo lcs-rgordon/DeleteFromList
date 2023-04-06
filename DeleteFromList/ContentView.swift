@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    // MARK: Computed properties
     var body: some View {
         List {
             Text("Item 1")
@@ -16,6 +18,12 @@ struct ContentView: View {
             Text("Item 4")
             Text("Item 5")
         }
+        .onDelete(perform: removeRows)
+    }
+    
+    // MARK: Functions
+    func removeRows(at offsets: IndexSet) {
+        // Wait a minute... what array are we removing rows from?
     }
 }
 
